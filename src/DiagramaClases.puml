@@ -1,0 +1,59 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface IMessage
+
+class Main {
+  + for(IMessage message : chatService.getMessage(chat.getId()))
+}
+
+class MessageNode {
+  - IMessage message
+  - MessageNode next
+}
+
+class MessageLinkedList {
+  - MessageNode head
+  + if(head == null)
+  + while(current.getNext() != null)
+  + while(current != null)
+}
+
+class TextMessage implements IMessage {
+  - User sender
+  - String content
+  - LocalDateTime timestamp
+}
+
+class User {
+  - String id
+  - String name
+}
+
+class Chat {
+  - String id
+  - List<User> participants
+  - MessageLinkedList messages
+}
+
+class UserService {
+  - Map<String, User> users
+}
+
+class ChatService {
+  - Map<String, Chat> chats
+  + if(chat != null)
+  + if(chat != null)
+  + if(chat != null)
+}
+
+Main --> ChatService
+ChatService --> Chat
+Chat --> MessageLinkedList
+MessageLinkedList --> MessageNode
+MessageNode --> IMessage
+TextMessage --> User
+Chat --> User
+UserService --> User
+
+@enduml
